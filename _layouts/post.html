@@ -144,6 +144,24 @@ layout: default
                     {% endfor %}
                 </ul>
                 {% endif %} -->
+
+                <!-- blog start -->
+                <div id="container"></div>
+                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                <script>
+                var gitment = new Gitment({
+                id: 'location.href', // 可选。默认为 location.href
+                owner: 'Sourcelink',
+                repo: 'blog',
+                oauth: {
+                    client_id: '034805e39c2ffa1d1fdf',
+                    client_secret: '8fd0065d58b717baa3bacacfffa26100b6a6f97e',
+                },
+                })
+                gitment.render('container')
+                </script>
+                <!-- blog end -->
             </div>
         </div>
     </div>
@@ -167,25 +185,6 @@ layout: default
 <!-- disqus 公共JS代码 end -->
 {% endif %}
 
-
-<!-- blog start -->
-<div id="container"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: 'location.href', // 可选。默认为 location.href
-  owner: 'Sourcelink',
-  repo: 'blog',
-  oauth: {
-    client_id: '034805e39c2ffa1d1fdf',
-    client_secret: '8fd0065d58b717baa3bacacfffa26100b6a6f97e',
-  },
-})
-gitment.render('container')
-</script>
-
-<!-- blog end -->
 
 {% if site.anchorjs %}
 <!-- async load function -->
