@@ -145,8 +145,8 @@ layout: default
                 </ul>
                 {% endif %} -->
 
-                <!-- blog start -->
-                <div id="container"></div>
+                <!-- gitment blog start -->
+                <!-- <div id="container"></div>
                 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
                 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
                 <script>
@@ -160,8 +160,27 @@ layout: default
                 },
                 })
                 gitment.render('container')
+                </script> -->
+                <!-- gitment blog end -->
+
+                <!-- gitalk blog start -->
+                <div id="gitalk-container"></div>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+                <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+                <script>
+                const gitalk = new Gitalk({
+                    clientID: '034805e39c2ffa1d1fdf',
+                    clientSecret: 'd406ebd7a08f41bad342fa4600bfa7e5c8fe77d7',
+                    repo: 'Sourcelink.github.io',
+                    owner: 'Sourcelink',
+                    admin: ['Sourcelink'],
+                    id: location.pathname,      // Ensure uniqueness and length less than 50
+                    distractionFreeMode: false  // Facebook-like distraction free mode
+                  })  
+                gitalk.render('gitalk-container')
                 </script>
-                <!-- blog end -->
+                <!-- gitalk blog end -->
+
             </div>
         </div>
     </div>
