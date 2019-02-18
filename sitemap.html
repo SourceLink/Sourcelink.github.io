@@ -1,0 +1,180 @@
+﻿﻿<!DOCTYPE html>
+<head>
+<title>网站地图 - v3.0</title>
+<meta http-equiv="Content-type" content="text/html;" charset="UTF-8" />
+<style>
+body{font-family: Arial, "微软雅黑";font-size: 13px;}
+ul, li{margin:0px; padding:0px; list-style:none;}ul{width:800px;margin-left: auto;margin-right: auto;}.title{width:800px;font-size: 18px;}.lks{float: left;padding-right: 15px;line-height: 30px;font-size: 16px;}
+</style>
+</head><body align="center">
+<ul><li class="title"><h3>sourcelink.top网站地图：(2018-12-15 11:47:57)</h3></li>
+<li class="lks">0、<a href="http://sourcelink.top">黎棉麒的独立博客</a></li>
+<li class="lks">1、<a href="http://sourcelink.top/">sourcelink</a></li>
+<li class="lks">2、<a href="http://sourcelink.top/">home</a></li>
+<li class="lks">3、<a href="http://sourcelink.top/about">about</a></li>
+<li class="lks">4、<a href="http://sourcelink.top/archive">archive</a></li>
+<li class="lks">5、<a href="http://sourcelink.top/tags">tags</a></li>
+<li class="lks">6、<a href="http://sourcelink.top/friends">friends</a></li>
+<li class="lks">7、<a href="http://sourcelink.top/2018/12/15/thread-specific-data/">
+        
+            线程私有数据tsd
+        
+        
+        
+            一. 概述
+
+平时写程序时,各个函数内部想共用一个变量,此时会创建一个全局变量来满足这样的操作.
+编写单线程程序,使用全局变量到还不会产生很大影响,但是多线程情况下就容易出现竞争关系;
+在多线程环境下,由于数据空间是共享的,因此全局变量也为所有线程所共有,当各个线程中有函数操作同一个变量就容易出现时序上的错误;
+
+此时有人可能会说,在创建线程的function中定义一个变量不就可以了,这样整...
+        
+    </a></li>
+<li class="lks">8、<a href="http://sourcelink.top/2018/12/08/binder-native-framework/">
+        
+            binder机制情景分析之native层浅析
+        
+        
+        
+            一. 概述
+
+浅析下android的native层binder的实现,基于android源码5.1,参考mediaservice的代码;
+
+1.1 问题
+
+因为前两篇我们用c写过binder的实例,实现了service和client端,也分析了驱动,从上到下好好的看了下binder的实现原理,但是当我自己看到binder的native的源码时,一脸懵逼,封装的太厉害了,脑海中产生了很多疑问,...
+        
+    </a></li>
+<li class="lks">9、<a href="http://sourcelink.top/2018/12/01/binder-transaction-stack/">
+        
+            binder机制情景分析之transaction_stack
+        
+        
+        
+            一. 概述
+
+这里以注册服务为例,当led_control_service请求注册服务时是通过handle找到的servicemanager,但是servicemanager是如何找到led_control_service进行回复的呢?
+
+答:这里驱动中用到了一个传送栈记录了发送和接收进程,线程的信息;  接下来我们讲下具体的流程;
+
+二. transaction_stack的来源
+
+主要代...
+        
+    </a></li>
+<li class="lks">10、<a href="http://sourcelink.top/2018/11/29/binder-driver/">
+        
+            binder机制情景分析之深入驱动
+        
+        
+        
+            一. 概述
+
+看过上篇c服务应用篇内容你肯定已经了解binder的一个使用过程,但是肯定还会有很多疑问:
+
+
+  
+    
+      service注册服务是怎么和servicemanager联系上的?
+    
+  
+  
+    
+      client是怎么根据服务名找到的service进程?
+    
+  
+  
+    
+      client获取的handle和servi...
+        
+    </a></li>
+<li class="lks">11、<a href="http://sourcelink.top/2018/11/27/binder-c-server/">
+        
+            binder机制情景分析之c服务应用
+        
+        
+        
+            一. 概述
+
+这里只讲下binder的实现原理，不牵扯到android的java层是如何调用;
+涉及到的会有servicemanager,led_control_server和test_client的代码,这些都是用c写的.其中led_control_server和test_client是
+仿照bctest.c写的; 在linux平台下运行binder更容易分析binder机制实现的原理(可...
+        
+    </a></li>
+<li class="lks">12、<a href="http://sourcelink.top/2018/11/25/binder-linux-environment/">
+        
+            binder机制情景分析之linux环境适配
+        
+        
+        
+            binder安装
+
+一. 环境
+- 运行环境：linux4.1.15
+- 开发板为天嵌imx6ul
+
+
+注意：
+
+  不使用脚本编译
+自己更改makefile中的arch cross_compile
+
+
+二. 内核修改
+
+2.1 打开内核配置菜单
+
+make menuconfig 
+
+
+2.2 修改配置
+
+  
+    
+      配置驱动
+    
+  
+
+
+转到device drive...
+        
+    </a></li>
+<li class="lks">13、<a href="http://sourcelink.top/2018/11/18/handler-java/">
+        
+            handler机制情景分析之java层浅析
+        
+        
+        
+            一. 概述
+
+在整个android的源码世界里，有两大利剑，其一是binder ipc机制，，另一个便是消息机制(由handler/looper/messagequeue等构成的).
+android有大量的消息驱动方式来进行交互，比如android的四剑客activity, service, broadcast, contentprovider的启动过程的交互，都离不开消息机制，androi...
+        
+    </a></li>
+<li class="lks">14、<a href="http://sourcelink.top/about/">sourcelink</a></li>
+<li class="lks">15、<a href="http://sourcelink.top/mailto:sourcelink@126.com/">
+                                    
+                                        
+                                        
+                                    
+                                </a></li>
+<li class="lks">16、<a href="http://sourcelink.top/tags/">标签</a></li>
+<li class="lks">17、<a href="http://sourcelink.top/tags/">
+                                    android
+                                </a></li>
+<li class="lks">18、<a href="http://sourcelink.top/tags/">
+                                    binder
+                                </a></li>
+<li class="lks">19、<a href="http://sourcelink.top/tags/">
+                                    linux
+                                </a></li>
+<li class="lks">20、<a href="http://sourcelink.top/tags/">
+                                    driver
+                                </a></li>
+<li class="lks">21、<a href="http://sourcelink.top/mailto:sourcelink@126.com/">
+                            
+                                
+                                
+                            
+                        </a></li>
+<li class="lks">22、<a href="http://help.bj.cn" target="_blank">网络地图 Sitemap</a></li></ul></body></html>
