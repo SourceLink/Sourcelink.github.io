@@ -156,7 +156,7 @@ and click on "The build process (how Kaldi is compiled)".
 
 ```
 
-## ３.2 按部就班
+## 3.2 按部就班
 
 > 编译原则: 核心＊２
 
@@ -180,6 +180,65 @@ echo Done
 Done
 ```
 
+## 3.3 测试cuda
+
+```
+cd kaldi-trunnk/src/cudamatrix
+```
+
+- 修改makfile
+
+将`makefile`中的`TESTFILES`修改为`BINFILES`, 接着从新编译;
+
+```
+make clean
+make
+```
+
+- 测试
+
+```
+./cu-vector-test
+```
+
+输出log如下:  
+
+```
+./cu-vector-test 
+LOG (cu-vector-test[5.5.204~1-2f92b]:SelectGpuId():cu-device.cc:128) Manually selected to compute on CPU.
+-1.05384e+09 -1.05384e+09
+-2.15126e+08 -2.15126e+08
+LOG (cu-vector-test[5.5.204~1-2f92b]:main():cu-vector-test.cc:868) Tests without GPU use succeeded.
+WARNING (cu-vector-test[5.5.204~1-2f92b]:SelectGpuId():cu-device.cc:203) Not in compute-exclusive mode.  Suggestion: use 'nvidia-smi -c 3' to set compute exclusive mode
+LOG (cu-vector-test[5.5.204~1-2f92b]:SelectGpuIdAuto():cu-device.cc:323) Selecting from 1 GPUs
+LOG (cu-vector-test[5.5.204~1-2f92b]:SelectGpuIdAuto():cu-device.cc:338) cudaSetDevice(0): GeForce GT 740M	free:1406M, used:597M, total:2004M, free/total:0.701871
+LOG (cu-vector-test[5.5.204~1-2f92b]:SelectGpuIdAuto():cu-device.cc:385) Trying to select device: 0 (automatically), mem_ratio: 0.701871
+LOG (cu-vector-test[5.5.204~1-2f92b]:SelectGpuIdAuto():cu-device.cc:404) Success selecting device 0 free mem ratio: 0.701871
+LOG (cu-vector-test[5.5.204~1-2f92b]:FinalizeActiveGpu():cu-device.cc:258) The active GPU is [0]: GeForce GT 740M	free:1361M, used:642M, total:2004M, free/total:0.67942 version 3.5
+-2.09624e+09 -2.09624e+09
+-3.48269e+09 -3.48269e+09
+LOG (cu-vector-test[5.5.204~1-2f92b]:main():cu-vector-test.cc:870) Tests with GPU use (if available) succeeded.
+LOG (cu-vector-test[5.5.204~1-2f92b]:PrintProfile():cu-device.cc:456) -----
+[cudevice profile]
+CuVectorBase::CopyRowsFromMat	0.00564122s
+AddVec	0.00586867s
+CuMatrix::CopyToMatD2H	0.00618124s
+AddSpVec	0.00717688s
+CuMatrix::SetZero	0.00725651s
+CuMatrix::Resize	0.00772119s
+CuPackedMatrix::CopyToPackedD2H	0.00780797s
+CuVector::CopyFromVecH2D	0.00909543s
+CuVector::SetZero	0.0216539s
+VecVec	0.0249407s
+CuVector::Resize	0.0267916s
+CuMatrixBase::CopyFromMat(from other CuMatrixBase)	0.0348191s
+CopyToVec	0.0702085s
+CopyFromVec	0.0914154s
+RandGaussian	19.8284s
+Total GPU time:	20.2046s (may involve some double-counting)
+-----
+LOG (cu-vector-test[5.5.204~1-2f92b]:PrintMemoryUsage():cu-allocator.cc:368) Memory usage: 0/714080256 bytes currently allocated/total-held; 0/1 blocks currently allocated/free; largest free/allocated block sizes are 0/714080256; time taken total/cudaMalloc is 0.00372839/0.00123286, synchronized the GPU 0 times out of 1181 frees; device memory info: free:679M, used:1325M, total:2004M, free/total:0.338915maximum allocated: 8395776current allocated: 0
+```
 
 # 四. 验证
 
