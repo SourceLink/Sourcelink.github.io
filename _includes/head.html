@@ -28,6 +28,14 @@
     <!-- add highlight -->
     <link rel="stylesheet" href="{{ "/css/androidstudio.css" | prepend: site.baseurl }}">
 		<script type="text/javascript" src="{{"/js/highlight.pack.js" | prepend:site.baseurl}}"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
-		
+    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- 添加 mathjax数学公式 -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+                        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+                                });
+      </script>
+      <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      </script>
 </head>
