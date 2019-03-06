@@ -16,7 +16,7 @@ tags:
 
 使用ubuntu的系统设置方式更换显卡驱动, 具体如下图:  
 
-![system](/imagse/ASR/nvidiaCudaInstall/system_install_nvaidia_driver.png)
+![system](/images/ASR/nvidiaCudaInstall/system_install_nvaidia_driver.png)
 
 
 
@@ -36,7 +36,7 @@ reboot
 
 从官网[地址](https://www.geforce.com/drivers)下载安装包进行更新,笔者的显卡为GT740M;
 
-![driver](/imagse/ASR/nvidiaCudaInstall/fix_install.png)
+![driver](/images/ASR/nvidiaCudaInstall/fix_install.png)
 
 选择对应的下载包进行下载后, 按下面步骤进行:  
 
@@ -119,13 +119,13 @@ Fri Feb 22 16:02:01 2019
 
 驱动对应的CUDA版本:  
 
-![version](/imagse/ASR/nvidiaCudaInstall/cuda_about_dirver_version.png)
+![version](/images/ASR/nvidiaCudaInstall/cuda_about_dirver_version.png)
 
 驱动版本和cuda版本要相符合不然后面运行会提示错误:  
 
 > CUDA driver version is insufficient for CUDA runtime version
 
-![cuda](/imagse/ASR/nvidiaCudaInstall/cuda_info.png)
+![cuda](/images/ASR/nvidiaCudaInstall/cuda_info.png)
 
 ## 2.1 安装
 
@@ -237,7 +237,7 @@ sudo make
 
 运行结果详情:  
 
-![result](/imagse/ASR/nvidiaCudaInstall/cuda_test.png)
+![result](/images/ASR/nvidiaCudaInstall/cuda_test.png)
 
 
 
