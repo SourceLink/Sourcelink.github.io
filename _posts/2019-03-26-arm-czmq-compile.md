@@ -114,7 +114,9 @@ cd czmq && ./autogen.sh
 
 其中**CFLAGS**指定头文件路径, **LDFLAGS**指定库路径;  
 
-在执行configure时, 会检测`libzmq.so`, `libuuid.so`等, 如果使用的是交叉工具链包则需要添加搜索路径, 在此路径下添加.pc文件
+如果使用单纯的交叉工具链请跳过下面这小节:  
+
+在执行configure时, 会检测`libzmq.so`, `libuuid.so`等, 如果使用的是交叉工具链包(除工具链外还有其他的库)则需要添加搜索路径, 在此路径下添加.pc文件
 
 ```
 /opt/oecore-x86_64/sysroots/armv7a-vfp-neon-oe-linux-gnueabi/usr/lib/pkgconfig
