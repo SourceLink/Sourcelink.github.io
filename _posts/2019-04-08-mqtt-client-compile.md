@@ -91,11 +91,11 @@ mosquitto &
 
 将前面编译出的ssl动态库和mqtt协议的动态库拷贝到开发板上:  
 
-![](/images/mqtt/mqtt_client_lib_tree.png =504x)
+![](/images/mqtt/mqtt_client_lib_tree.png)
 
 然后修改订阅的ip地址后再重新编译:  
 
-![](/images/mqtt/client_sub_ipconfig.png =504x)
+![](/images/mqtt/client_sub_ipconfig.png)
 
 接着在开发板上运行`paho_cd_sub`可执行程序
 
