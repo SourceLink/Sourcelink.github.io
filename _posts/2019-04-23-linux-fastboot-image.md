@@ -124,6 +124,7 @@ sudo fastboot flash system system.img
 # 三. 重启开发板
 
 - 重启开发板
+
 ```
 sudo fastboot reboot
 ```
