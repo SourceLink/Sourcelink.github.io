@@ -14,9 +14,9 @@ tags:
 
 # 一. 概述
 
->宿主机 ： Ubuntu 16.04 LTS / X64
-目标板：讯为4412 全功能
-uboot： 2010.03
+>宿主机 ： Ubuntu 16.04 LTS / X64  
+目标板：讯为4412 全功能  
+uboot： 2010.03  
 
 因为讯为提供的uboot实在是太老了，新增或删减分区还必须得修改代码才能实现，研究了一早上代码， 自己也修改测试过，现在记录下修改的过程和分区原理；
 
@@ -34,7 +34,7 @@ fdisk -p 0
 fdisk -c 0 1024 300 300 
 ```
 
-1024， 300 ，300表示前三个分区的大小
+1024， 300 ，300表示前三个分区的大小  
 
 # 二. 分区
 
@@ -76,10 +76,10 @@ int create_mmc_fdisk(int argc, char *argv[])
 }
 ```
 
-> ①: 根据输入的设备号获取存储设备的块数， 每个块的大小为512字节
-> ②: 根据输入参数创建分区，创建的分区信息存放在mbr中
-> ③: 将mbr存放进存储设备中
-> ④: 打印分区信息
+> ①: 根据输入的设备号获取存储设备的块数， 每个块的大小为512字节  
+> ②: 根据输入参数创建分区，创建的分区信息存放在mbr中  
+> ③: 将mbr存放进存储设备中  
+> ④: 打印分区信息  
 
 分区的流程基本就是上述几步，接下来重点讲解下如何分区；
 
@@ -153,12 +153,12 @@ int make_mmc_partition(int total_block_count, unsigned char *mbr, int flag, char
 
 上面贴出来的代码有删减；
 
-> ①: 获取mmc的寻址方式（LBA or CHS）
-> ②: 根据要设置的分区大小计算块偏移值
-> ③: 设置分区信息（这个id比较重要）
-> ④: 设置分区信息，如块起始地址，偏移值等
-> ⑤: 设置mbr校检信息，这个相当于校检头后面一些读取分区信息会使用到
-> ⑥: 将partInfo里的信息保存到mbr中，可以看出mbr的保存方式是个置顶向下的栈方式
+> ①: 获取mmc的寻址方式（LBA or CHS） 
+> ②: 根据要设置的分区大小计算块偏移值  
+> ③: 设置分区信息（这个id比较重要）  
+> ④: 设置分区信息，如块起始地址，偏移值等  
+> ⑤: 设置mbr校检信息，这个相当于校检头后面一些读取分区信息会使用到  
+> ⑥: 将partInfo里的信息保存到mbr中，可以看出mbr的保存方式是个置顶向下的栈方式  
 
 可以看到我这里新增了一个分区存储在`mbr[0x1AE]`；
 
@@ -250,8 +250,8 @@ int get_mmc_part_info(char *device_name, int part_num, int *block_start, int *bl
 
 为什么说那个id信息很重要，在一开始我新增的分区时将`mbr[0x1BE]`中的id修改成了`0x83`,  `mbr[0x1AE]`中的id修改成了`0x0c`, 在修改了上述东西后，发现fastboot不能用了，提示信息如下：
 
-> Error: No MBR is found at SD/MMC.
-> Hint: use fdisk command to make partitions.
+> Error: No MBR is found at SD/MMC.  
+> Hint: use fdisk command to make partitions.  
 
 后面查看代码发现了问题，在函数：
 
@@ -315,9 +315,9 @@ part_type_error:
 }
 ```
 
-可以看出这里做了`id`的判断， 因为我们修改分区信息导致id判断失败从而使fastboot不能使用；
+可以看出这里做了`id`的判断， 因为我们修改分区信息导致id判断失败从而使fastboot不能使用；  
 
-所以在后面增加分区的时候为了尽可能小的改动， 所以在`mbr[0x1AE]`中将id修改为0x83，设置成新增分区， 原`mbr[0x1BE]`的分区信息保留不变；
+所以在后面增加分区的时候为了尽可能小的改动， 所以在`mbr[0x1AE]`中将id修改为0x83，设置成新增分区， 原`mbr[0x1BE]`的分区信息保留不变；  
 
 
 ## 3.2 ext2format
@@ -339,9 +339,9 @@ partion #    size(MB)     block start #    block count    partition_Id
 
 涉及到的源文件如下：
 
-> ext2fs.c
-> part.c
-> part_dos.c
+> ext2fs.c  
+> part.c  
+> part_dos.c  
 
 函数调用关系如下：
 
