@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "合宙Air720_MQTT概述"
+title:  "合宙Air720_MQTT命令详解"
 date:   2019-07-16 15:24:56
 catalog:  true
 author: Sourcelink
@@ -175,41 +175,44 @@ tags:
 
 ## 2.4 AT+MPUB
 
+
 <table>
    <tr>
-      <td>命令类型</td>
-      <td>语法</td>
-      <td>返回</td>
-      <td>说明</td>
+   <td>命令类型</td>
+   <td>语法</td>
+   <td>返回</td>
+   <td>说明</td>
    </tr>
-    <tr>
-    <td rowspan="4">设置命令</td>
-    <td rowspan="4">AT+MPUB=&lttopic&gt,&ltqos&gt,&ltretain&gt,&ltmessage&gt</td>
-    <td>OK</td>
-    <td>qos=0</td>
-    </tr>
-    <tr>
-    <td>OK<br>PUBACK</td>
-    <td>qos=1</td>
-    </tr>
-    <tr>
-    <td>OK</td>
-    <td>qos=2</td>
-    </tr>
-    <tr>
-    <td>ERROR</td>
-    <td>失败</td>
-    </tr>
-    <tr>
-    <td>测试命令</td>
-    <td>AT+MPUB=?</td>
-    <td>+MPUB:<topic>,(0-2),(0-1),<message><br>OK</td>
-    <td> </td>
-    </tr>
+   <tr>
+   <td rowspan="4">设置命令</td>
+   <td rowspan="4">AT+MPUB=&lttopic&gt,&ltqos&gt,&ltretain&gt,&ltmessage&gt</td>
+   <td>OK</td>
+   <td>qos=0</td>
+   </tr>
+   <tr>
+   <td>OK<br>PUBACK</td>
+   <td>qos=1</td>
+   </tr>
+   <tr>
+   <td>OK</td>
+   <td>qos=2</td>
+   </tr>
+   <tr>
+   <td>ERROR</td>
+   <td>失败</td>
+   </tr>
+   <tr>
+   <td>测试命令</td>
+   <td>AT+MPUB=?</td>
+   <td>+MPUB:<&ltopic&gt,(0-2),(0-1),&ltmessage&gt<br>OK</td>
+   <td> </td>
+   </tr>
 </table>
 
 
+
 参数详解:  
+
 
 - topic
 
