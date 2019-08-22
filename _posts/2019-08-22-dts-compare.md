@@ -41,12 +41,12 @@ FATAL ERROR: Unable to parse input tree
 cpp -I ../../../include -E -P -x assembler-with-cpp tq-imx6ul_net0_uart.dts tq-imx6ul_net0_uart.dts.pre
 ```
 
-> -I ../../../include(我将dts目录下的文件都拷贝出来了所以没有指定路径有所改变)内核设备树源主要是`#include <dt-bindings/input/input.h>` 这是一个相对于`arch/arm/boot/dts/include`的路径.
-> -E 表示仅预处理,不确定在使用cpp命令时是否需要
-> -P 禁用源行号注释,这会混淆设备树编译器
-> -x assembler-with-cpp强制预处理器以某种语言模式运行, 我想这有助于它不会被与预处理器指令在同一文件中的设备树语法混淆.我使用它是因为它在内核Makefile中.
-> tq-imx6ul_net0_uart.dts是需要进行预编译的dts文件
-> tq-imx6ul_net0_uart.dts.pre为预编译完成的dts文件
+> -I ../../../include(我将dts目录下的文件都拷贝出来了所以没有指定路径有所改变)内核设备树源主要是`#include <dt-bindings/input/input.h>` 这是一个相对于`arch/arm/boot/dts/include`的路径.  
+> -E 表示仅预处理,不确定在使用cpp命令时是否需要   
+> -P 禁用源行号注释,这会混淆设备树编译器   
+> -x assembler-with-cpp强制预处理器以某种语言模式运行, 我想这有助于它不会被与预处理器指令在同一文件中的设备树语法混淆.我使用它是因为它在内核Makefile中.  
+> tq-imx6ul_net0_uart.dts是需要进行预编译的dts文件  
+> tq-imx6ul_net0_uart.dts.pre为预编译完成的dts文件  
 
 
 > tq-imx6ul_net0_uart.dts.pre
@@ -91,10 +91,10 @@ cpp -I ../../../include -E -P -x assembler-with-cpp tq-imx6ul_net0_uart.dts tq-i
 ./dtc -O dtb -I dts -o tq-imx6ul_net0_uart.dtb.bak tq-imx6ul_net0_uart.dts.pre
 ```
 
-> -I dts指定输入格式是文本设备树源
-> -O dtb指定创建设备树二进制blob
-> -o tq-imx6ul_net0_uart.dtb.bak定义输出的文件名
-> tq-imx6ul_net0_uart.dts.pre 将要编译成dtb的文件
+> -I dts指定输入格式是文本设备树源  
+> -O dtb指定创建设备树二进制blob  
+> -o tq-imx6ul_net0_uart.dtb.bak定义输出的文件名  
+> tq-imx6ul_net0_uart.dts.pre 将要编译成dtb的文件  
 
 
 # 四. 反汇编
@@ -103,15 +103,15 @@ cpp -I ../../../include -E -P -x assembler-with-cpp tq-imx6ul_net0_uart.dts tq-i
 ./dtc -O dts -I dtb -o tq-imx6ul_net0_uart.dts.bak tq-imx6ul_net0_uart.dtb.bak
 ```
 
-> -I dtb 指定输入设备树二进制文件
-> -O dts指定创建设备树文本格式
-> -o tq-imx6ul_net0_uart.dts.bak定义输出的文件名
->  tq-imx6ul_net0_uart.dtb.bak将要反汇编的dtb文件
+> -I dtb 指定输入设备树二进制文件  
+> -O dts指定创建设备树文本格式  
+> -o tq-imx6ul_net0_uart.dts.bak定义输出的文件名  
+>  tq-imx6ul_net0_uart.dtb.bak将要反汇编的dtb文件  
 
 
 截取反汇编的部分内容如下:
 
-> tq-imx6ul_net0_uart.dts.bak
+> tq-imx6ul_net0_uart.dts.bak  
 
 ```
 /dts-v1/;
