@@ -109,6 +109,8 @@ cpp -I ../../../include -E -P -x assembler-with-cpp tq-imx6ul_net0_uart.dts tq-i
 >  tq-imx6ul_net0_uart.dtb.bak将要反汇编的dtb文件
 
 
+截取反汇编的部分内容如下:
+
 > tq-imx6ul_net0_uart.dts.bak
 
 ```
