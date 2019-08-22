@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "手动编译dts"
-date:   2019-08-22 17:20:56
+date:   2019-08-22
 catalog:  true
 author: Sourcelink
 tags:
