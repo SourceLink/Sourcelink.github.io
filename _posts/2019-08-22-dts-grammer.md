@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "设备树DTS格式解析"
-date:   2019-08-22 22:02:56
+date:   2019-08-22 17:02:56
 catalog:  true
 author: Sourcelink
 tags:
