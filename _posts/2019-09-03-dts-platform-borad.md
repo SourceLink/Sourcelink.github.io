@@ -205,6 +205,7 @@ int __init of_flat_dt_match(unsigned long node, const char *const *compat)
 }
 ```
 
+其中参数`initial_boot_params`存放了dtb文件的起始地址; 
 
 ### 2.2.5 of_fdt_match
 
