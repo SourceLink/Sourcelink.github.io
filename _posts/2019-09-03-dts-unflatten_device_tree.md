@@ -171,13 +171,13 @@ static void * unflatten_dt_node(void *blob,
 	int has_name = 0;
 	int new_format = 0;
 
-	pathp = fdt_get_name(blob, *poffset, &l);                                ①
+	pathp = fdt_get_name(blob, *poffset, &l);                               ①
 	if (!pathp)
 		return mem;
 
 	allocl = ++l;
 
-	if ((*pathp) != '/') {                                                   ②
+	if ((*pathp) != '/') {                                                  ②
 		new_format = 1;
 		if (fpsize == 0) {
 
@@ -194,12 +194,12 @@ static void * unflatten_dt_node(void *blob,
 		}
 	}
 
-	np = unflatten_dt_alloc(&mem, sizeof(struct device_node) + allocl,        ③
+	np = unflatten_dt_alloc(&mem, sizeof(struct device_node) + allocl,       ③
 				__alignof__(struct device_node));
 	if (!dryrun) {
 		char *fn;
 		of_node_init(np);
-		np->full_name = fn = ((char *)np) + sizeof(*np);                      ④
+		np->full_name = fn = ((char *)np) + sizeof(*np);                 ④
 		if (new_format) {
 			/* rebuild full path for new format */
 			if (dad && dad->parent) {
@@ -208,9 +208,9 @@ static void * unflatten_dt_node(void *blob,
 			}
 			*(fn++) = '/';
 		}
-		memcpy(fn, pathp, l);                                                 ④
+		memcpy(fn, pathp, l);                                            ④
 
-		prev_pp = &np->properties;                                            ⑤
+		prev_pp = &np->properties;                                       ⑤
 		if (dad != NULL) {
 			np->parent = dad;
 			np->sibling = dad->child;
@@ -238,7 +238,7 @@ static void * unflatten_dt_node(void *blob,
 		pp = unflatten_dt_alloc(&mem, sizeof(struct property),
 					__alignof__(struct property));
 		if (!dryrun) {
-			if ((strcmp(pname, "phandle") == 0) ||                           ⑦
+			if ((strcmp(pname, "phandle") == 0) ||                   ⑦
 			    (strcmp(pname, "linux,phandle") == 0)) {
 				if (np->phandle == 0)
 					np->phandle = be32_to_cpup(p);
@@ -297,7 +297,7 @@ static void * unflatten_dt_node(void *blob,
 	if (depth < 0)
 		depth = 0;
 	while (*poffset > 0 && depth > old_depth)
-		mem = unflatten_dt_node(blob, mem, poffset, np, NULL,                 ⑩
+		mem = unflatten_dt_node(blob, mem, poffset, np, NULL,             ⑩
 					fpsize, dryrun);
 
 	if (*poffset < 0 && *poffset != -FDT_ERR_NOTFOUND)
