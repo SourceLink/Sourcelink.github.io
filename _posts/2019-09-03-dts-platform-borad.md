@@ -63,7 +63,7 @@ static const struct machine_desc __mach_desc_##_name	\
 };
 ```
 
-编译的时候, 编辑器会把这些 machine descriptor放到一个特殊的段中(**.arch.info.init**), 形成machine描述符的列表;
+编译的时候, 编辑器会把这些 machine descriptor放到一个特殊的段中(**.arch.info.init**), 形成machine描述符的列表;  
 
 > ②: 内核在匹配machine_desc时, 会从字段`.arch.info.init`中取出每个machine_desc中的`.dt_compat`成员与设备树根目录下的compatile属性进行比较; 
 
@@ -91,6 +91,9 @@ start_kernel();
                     of_fdt_match();
                         of_fdt_is_compatible();
 ```
+
+![](/images/dts/dts_platform_math.png)
+
 
 ### 2.2.1 setup_arch()
 
@@ -190,9 +193,9 @@ const void * __init of_flat_dt_match_machine(const void *default_match,
 }
 ```
 
-> ①: 一直调用回调函数`arch_get_next_mach()`从`.arch.info.init`字段获取`machine_desc`;  
-> ②: 从`.arch.info.init`字段获取`machine_desc`与dtb中的根目录下`compare`属性进行比较;  
-> ③: 如果是最佳得分, 即最佳匹配则将`best_data`(machine_desc)返回给调用函数;  
+> ①: 一直调用回调函数`arch_get_next_mach()`从`.arch.info.init`字段获取`machine_desc`;    
+> ②: 从`.arch.info.init`字段获取`machine_desc`与dtb中的根目录下`compare`属性进行比较;    
+> ③: 如果是最佳得分, 即最佳匹配则将`best_data`(machine_desc)返回给调用函数;    
 
 
 ### 2.2.4 of_flat_dt_match
@@ -258,7 +261,7 @@ int of_fdt_is_compatible(const void *blob,
 }
 ```
 
-> ①: 获取属性`compatible`中的值; 
-> ②: 将获取到属性`compatible`的值与变量`compat`比较, 该值是从`.arch.info.init`字段获取到的`machine_desc`中成员`dt_compat`; 
-> 如果比较成功变量`score`则立即返回, 否则进行下一轮比较, `score`的值越大说明匹配度越低;  
+> ①: 获取属性`compatible`中的值;   
+> ②: 将获取到属性`compatible`的值与变量`compat`比较, 该值是从`.arch.info.init`字段获取到的`machine_desc`中成员`dt_compat`;   
+> 如果比较成功变量`score`则立即返回, 否则进行下一轮比较, `score`的值越大说明匹配度越低;    
 > ③: 因为属性`compatible`一般为字符串列表, 所以用strlen是可以计算出字符串长度, 加1是为了跳过逗号;  
