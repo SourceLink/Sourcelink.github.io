@@ -56,3 +56,35 @@ void kos_sched(void)
     kos_cpu_ctxsw();
 }
 ```
+
+# 三. 中断调度
+
+
+在中断处理函数中不允许进程调度;
+
+所以需要实现当前是否在中断中的判断；
+
+
+```
+void kos_sched(void)
+{
+    unsigned int state = kos_cpu_enter_critical();
+
+    if (!kos_sys_is_running() || kos_sysy_is_inirq()) {
+        kos_cpu_exit_critical(state);
+        return ;
+    }
+
+    kos_ready_proc = kos_rq_highest_ready_proc();
+
+    if (kos_ready_proc == NULL || 
+        kos_ready_proc == kos_curr_proc) {
+            kos_cpu_exit_critical(state);
+            return ;
+    }
+
+    kos_cpu_exit_critical(state);
+
+    kos_cpu_ctxsw();
+}
+```
