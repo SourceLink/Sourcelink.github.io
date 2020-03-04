@@ -196,3 +196,26 @@ static const char *imx6ul_dt_compat[] __initconst = {
 
 > ②：如果是最佳得分, 即最佳匹配则将best_data(machine_desc)返回给调用函数
 
+# 四. 全局变量machine_desc的获取
+
+```
+void __init setup_arch(char **cmdline_p)
+{
+	const struct machine_desc *mdesc;
+
+	setup_processor();
+	mdesc = setup_machine_fdt(__atags_pointer);
+	if (!mdesc)
+		mdesc = setup_machine_tags(__atags_pointer, __machine_arch_type);
+	machine_desc = mdesc;                                                  ①
+	machine_name = mdesc->name;
+	dump_stack_set_arch_desc("%s", mdesc->name);
+
+	if (mdesc->reboot_mode != REBOOT_HARD)
+		reboot_mode = mdesc->reboot_mode;
+		.....
+		
+}		
+```
+
+> ①: 通过setup_machine_fdt()获取到desc, 在这里赋值给了全局变量machine_desc;
