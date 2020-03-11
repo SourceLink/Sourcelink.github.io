@@ -110,7 +110,7 @@ struct driver_private {
 
 请看下图:  
 
-![](_v_images/20200310104913978_1220199041.png)
+![](/images/kobject/20200310104913978_1220199041.png)
 
 
 其中通过成员list进行挂载, 可以看到是使用kobject结构体中的entry成员作为挂载节点;  
@@ -207,25 +207,25 @@ static void bus_release(struct kobject *kobj)
 
 ## 3.1 kset与kset
 
-![](_v_images/20200309163519606_185342131.png)
+![](/images/kobject/20200309163519606_185342131.png)
 
 原来kset集合之前也是有从属关系, 在分析bus的kset集合与驱动的kset集合得到;  
 
 ## 3.2 kobject与kobject
 
-![](_v_images/20200309163826945_421097133.png)
+![](/images/kobject/20200309163826945_421097133.png)
 
 可这个很简单, kobject2的父对象为kobject1;  比如block设备, char设备都属于设备;  
 
 ## 3.3 kset与kobject
 
-![](_v_images/20200309164253072_95925556.png)
+![](/images/kobject/20200309164253072_95925556.png)
 
 这个就不解释了;
 
 ## 3.4 kobject与kset
 
-![](_v_images/20200309164516919_265961035.png)
+![](/images/kobject/20200309164516919_265961035.png)
 
 该情况可以参考`/sys/`目录下注册的kernel对象(kobject对象)与kernerl目录下的slab对象(kset对象);
 
