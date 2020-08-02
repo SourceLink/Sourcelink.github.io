@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "详解Linux内核之syscall"
